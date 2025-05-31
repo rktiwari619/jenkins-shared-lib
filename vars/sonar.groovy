@@ -12,3 +12,9 @@ def call(String status, String customMessage = '') {
 
     def defaultMsg = "${env.JOB_NAME} - Build #${env.BUILD_NUMBER} - ${status.toUpperCase()} \n ${env.BUILD_URL}"
 
+    slackSend(
+        channel:'#instagram',
+        color: colorCode,
+        message: customMessage ? customMessage : defaultMsg
+        )
+}
